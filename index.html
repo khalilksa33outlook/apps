@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utility Apps Cluster</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-tools"></i> Utility Apps</h1>
+        <p>A collection of handy tools for your daily needs</p>
+    </header>
+
+    <main>
+        <section class="app-grid">
+            <!-- Image Compressor -->
+            <div class="app-card" id="image-compressor">
+                <div class="app-icon">
+                    <i class="fas fa-file-image"></i>
+                </div>
+                <h3>Image Compressor</h3>
+                <p>Reduce image file size without losing quality</p>
+                <button class="open-app-btn" data-app="image-compressor">Open</button>
+            </div>
+
+            <!-- PDF to JPG -->
+            <div class="app-card" id="pdf-to-jpg">
+                <div class="app-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <h3>PDF to JPG</h3>
+                <p>Convert PDF pages to JPG images</p>
+                <button class="open-app-btn" data-app="pdf-to-jpg">Open</button>
+            </div>
+
+            <!-- PDF to Word -->
+            <div class="app-card" id="pdf-to-word">
+                <div class="app-icon">
+                    <i class="fas fa-file-word"></i>
+                </div>
+                <h3>PDF to Word</h3>
+                <p>Convert PDF files to editable Word documents</p>
+                <button class="open-app-btn" data-app="pdf-to-word">Open</button>
+            </div>
+
+            <!-- Text to Speech -->
+            <div class="app-card" id="text-to-speech">
+                <div class="app-icon">
+                    <i class="fas fa-microphone"></i>
+                </div>
+                <h3>Text to Speech</h3>
+                <p>Convert written text into spoken words</p>
+                <button class="open-app-btn" data-app="text-to-speech">Open</button>
+            </div>
+
+            <!-- QR Code Generator -->
+            <div class="app-card" id="qr-generator">
+                <div class="app-icon">
+                    <i class="fas fa-qrcode"></i>
+                </div>
+                <h3>QR Generator</h3>
+                <p>Create QR codes from text or URLs</p>
+                <button class="open-app-btn" data-app="qr-generator">Open</button>
+            </div>
+
+            <!-- Password Generator -->
+            <div class="app-card" id="password-generator">
+                <div class="app-icon">
+                    <i class="fas fa-key"></i>
+                </div>
+                <h3>Password Generator</h3>
+                <p>Create strong, secure passwords</p>
+                <button class="open-app-btn" data-app="password-generator">Open</button>
+            </div>
+        </section>
+
+        <!-- App Containers (hidden by default) -->
+        <div class="app-container" id="image-compressor-container">
+            <div class="app-header">
+                <button class="back-btn"><i class="fas fa-arrow-left"></i> Back</button>
+                <h2>Image Compressor</h2>
+            </div>
+            <div class="app-content">
+                <div class="upload-area" id="image-upload-area">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag & drop your image here or click to browse</p>
+                    <input type="file" id="image-input" accept="image/*">
+                </div>
+                <div class="compression-options">
+                    <label for="quality-range">Quality: <span id="quality-value">70</span>%</label>
+                    <input type="range" id="quality-range" min="1" max="100" value="70">
+                </div>
+                <div class="result-area hidden" id="image-result-area">
+                    <div class="comparison">
+                        <div class="original">
+                            <h4>Original</h4>
+                            <img id="original-image" src="" alt="Original">
+                            <p id="original-size"></p>
+                        </div>
+                        <div class="compressed">
+                            <h4>Compressed</h4>
+                            <img id="compressed-image" src="" alt="Compressed">
+                            <p id="compressed-size"></p>
+                        </div>
+                    </div>
+                    <button id="download-compressed-btn">Download Compressed Image</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="app-container" id="pdf-to-jpg-container">
+            <div class="app-header">
+                <button class="back-btn"><i class="fas fa-arrow-left"></i> Back</button>
+                <h2>PDF to JPG Converter</h2>
+            </div>
+            <div class="app-content">
+                <div class="upload-area" id="pdf-upload-area">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag & drop your PDF here or click to browse</p>
+                    <input type="file" id="pdf-input" accept=".pdf">
+                </div>
+                <div class="conversion-options">
+                    <label for="pdf-page-range">Pages: </label>
+                    <select id="pdf-page-range">
+                        <option value="all">All pages</option>
+                        <option value="custom">Custom range</option>
+                    </select>
+                    <div class="custom-range hidden" id="custom-range-inputs">
+                        <input type="number" id="start-page" min="1" placeholder="Start">
+                        <span>to</span>
+                        <input type="number" id="end-page" min="1" placeholder="End">
+                    </div>
+                    <label for="jpg-quality">JPG Quality: <span id="jpg-quality-value">80</span>%</label>
+                    <input type="range" id="jpg-quality" min="1" max="100" value="80">
+                </div>
+                <div class="result-area hidden" id="pdf-to-jpg-result">
+                    <div id="jpg-preview-container"></div>
+                    <button id="download-all-jpgs-btn">Download All as ZIP</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="app-container" id="pdf-to-word-container">
+            <div class="app-header">
+                <button class="back-btn"><i class="fas fa-arrow-left"></i> Back</button>
+                <h2>PDF to Word Converter</h2>
+            </div>
+            <div class="app-content">
+                <div class="upload-area" id="pdf-word-upload-area">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag & drop your PDF here or click to browse</p>
+                    <input type="file" id="pdf-word-input" accept=".pdf">
+                </div>
+                <div class="result-area hidden" id="pdf-to-word-result">
+                    <a id="download-word-btn" class="download-btn" download>
+                        <i class="fas fa-file-word"></i> Download Word Document
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- More app containers would go here -->
+    </main>
+
+    <footer>
+        <p>© 2023 Utility Apps Cluster. All client-side processing - your files never leave your computer.</p>
+    </footer>
+
+    <!-- JS Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js';
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
